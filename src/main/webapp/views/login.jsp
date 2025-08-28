@@ -1,76 +1,82 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-  <meta charset="UTF-8">
-  <title>Đăng Nhập Vào Hệ Thống</title>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  <style>
-    body {
-      background: #f9f9f9;
-      font-family: Arial, sans-serif;
-    }
-    .login-box {
-      width: 400px;
-      margin: 80px auto;
-      background: #fff;
-      padding: 25px;
-      border-radius: 5px;
-      box-shadow: 0px 0px 10px #ccc;
-    }
-    .login-box h2 {
-      text-align: center;
-      margin-bottom: 25px;
-    }
-    .remember {
-      margin-top: 10px;
-      margin-bottom: 15px;
-    }
-    .bottom-text {
-      text-align: center;
-      margin-top: 20px;
-    }
-    .btn-login {
-      width: 100%;
-      background-color: #2196f3;
-      color: white;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <style>
+        body {
+            background: #f8f9fa;
+            font-family: Arial, sans-serif;
+        }
+        .login-container {
+            width: 400px;
+            margin: 80px auto;
+            background: #fff;
+            padding: 30px;
+            border: 1px solid #e0e0e0;
+            box-shadow: 0px 0px 10px rgba(0,0,0,0.05);
+        }
+        .login-container h2 {
+            text-align: center;
+            margin-bottom: 25px;
+            color: #555;
+        }
+        .form-control {
+            border-radius: 0;
+            height: 40px;
+        }
+        .btn-login {
+            width: 100%;
+            border-radius: 0;
+            background: #009fe3;
+            color: #fff;
+            height: 40px;
+        }
+        .btn-login:hover {
+            background: #007bbd;
+        }
+        .login-footer {
+            text-align: center;
+            margin-top: 20px;
+            color: #666;
+        }
+        .login-footer a {
+            color: #009fe3;
+            text-decoration: none;
+        }
+        .login-footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
 </head>
 <body>
 
-<div class="login-box">
-  <h2>Đăng Nhập Vào Hệ Thống</h2>
-  
-  <form action="login" method="post">
-    <!-- Tài khoản -->
-    <div class="input-group" style="margin-bottom:15px;">
-      <span class="input-group-addon"><i class="fa fa-user"></i></span>
-      <input type="text" name="username" class="form-control" placeholder="Tài khoản">
+<div class="login-container">
+    <h2>Login in System</h2>
+    <form action="login" method="post">
+        <div style="margin-bottom:15px;">
+            <input type="text" class="form-control" name="username" placeholder="username">
+        </div>
+        <div style="margin-bottom:15px;">
+            <input type="password" class="form-control" name="password" placeholder="password">
+        </div>
+        <div class="row" style="margin-bottom:15px;">
+            <div class="col-xs-6">
+                <label>
+                    <input type="checkbox" name="remember"> Remember me
+                </label>
+            </div>
+            <div class="col-xs-6 text-right">
+                <a href="#">Forget Password?</a>
+            </div>
+        </div>
+        <button type="submit" class="btn btn-login">Login</button>
+    </form>
+    <div class="login-footer">
+        If you don't have an account <a href="register.jsp">Sign up</a>
     </div>
-    <!-- Mật khẩu -->
-    <div class="input-group" style="margin-bottom:15px;">
-      <span class="input-group-addon"><i class="fa fa-lock"></i></span>
-      <input type="password" name="password" class="form-control" placeholder="Mật khẩu">
-    </div>
-    
-    <div class="row remember">
-      <div class="col-xs-6">
-        <label><input type="checkbox"> Nhớ tôi</label>
-      </div>
-      <div class="col-xs-6 text-right">
-        <a href="#">Quên mật khẩu?</a>
-      </div>
-    </div>
-    
-    <button type="submit" class="btn btn-login">Đăng nhập</button>
-    
-    <div class="bottom-text">
-      Nếu bạn chưa có tài khoản trên hệ thống, thì hãy <a href="#">Đăng ký</a>
-    </div>
-  </form>
 </div>
 
 </body>

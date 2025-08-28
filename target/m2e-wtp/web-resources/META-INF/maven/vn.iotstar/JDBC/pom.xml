@@ -45,8 +45,8 @@
 					<version>3.14.0</version>
 					<configuration>
 						<!-- put your configurations here -->
-						<source>24</source>
-						<target>24</target>
+						<source>22</source>
+						<target>22</target>
 					</configuration>
 				</plugin>
 

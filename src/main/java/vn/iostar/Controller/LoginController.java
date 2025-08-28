@@ -36,7 +36,7 @@ import vn.iostar.service.impl.UserServiceImpl;
 	resp.sendRedirect(req.getContextPath()+ "/waiting");
 	return;
 	}}}
-	req.getRequestDispatcher("views/login.jsp").forward(req, resp);
+	req.getRequestDispatcher("/views/login.jsp").forward(req, resp);
 	}
 	
 	@Override

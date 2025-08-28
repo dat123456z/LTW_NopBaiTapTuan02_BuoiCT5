@@ -20,25 +20,5 @@ public class DBConnection {
         return DriverManager.getConnection(url, userID, password);
     }
 
-    public static void main(String[] args) {
-        try (Connection conn = new DBConnection().getConnection()) {
-        	// crate statement
-        	Statement stmt = conn.createStatement();
-      
-        	stmt.executeUpdate("INSERT INTO SV(id, username, email) VALUES (1, 'Dat', 'dat@gmail.com')");
-        
-        	ResultSet rs = stmt.executeQuery("SELECT * FROM SV");
-        	// show data
-        	while (rs.next()) {
-        		 System.out.println(
-        	                rs.getInt("id") + " " +
-        	                rs.getString("username") + " " +
-        	                rs.getString("email")
-        	            );
-        	}
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
+  
 }
