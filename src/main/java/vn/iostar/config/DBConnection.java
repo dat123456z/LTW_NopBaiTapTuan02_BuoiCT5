@@ -8,7 +8,7 @@ import java.sql.Statement;
 public class DBConnection {
     private final String host = "DAVIDDET";   // KHÔNG kèm \SQLEXPRESS
     private final int port = 1433;            // Đặt đúng cổng thực tế
-    private final String dbName = "SV";
+    private final String dbName = "LTW";
     private final String userID = "sa";
     private final String password = "123456";
 

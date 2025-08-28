@@ -1,39 +1,45 @@
 package vn.iostar.dao.impl;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-
 import vn.iostar.config.DBConnection;
 import vn.iostar.dao.UserDao;
 import vn.iostar.models.User;
 
-public class UserDaoImpl implements UserDao{
-	public Connection conn = null;
-	public PreparedStatement ps = null;
-	public ResultSet rs = null;
-	
-	@Override
-	public User get(String username) {
-	String sql = "SELECT * FROM [User] WHERE username = ? ";
-	try {
-	conn = new DBConnection().getConnection();
-	ps = conn.prepareStatement(sql);
-	ps.setString(1, username);
-	rs = ps.executeQuery();
-	while (rs.next()) {
-	User user = new User(0, sql, sql, sql, sql, sql, 0, sql, null);
-	user.setId(rs.getInt("id"));
-	user.setEmail(rs.getString("email"));
-	user.setUserName(rs.getString("username"));
-	user.setFullName(rs.getString("fullname"));
-	user.setPassWord(rs.getString("password"));
-	user.setAvatar(rs.getString("avatar"));
-	user.setRoleid(Integer.parseInt(rs.getString("roleid")));
-	user.setPhone(rs.getString("phone"));
-	user.setCreatedDate(rs.getDate("createdDate"));
-	return user; }
-	} catch (Exception e) {e.printStackTrace(); }
-	return null;
-	}
+import java.sql.*;
+
+public class UserDaoImpl implements UserDao {
+
+    @Override
+    public User get(String username) {
+        final String sql =
+            "SELECT TOP 1 id, email, userName, fullName, passWord, avatar, roleid, phone, createdDate " +
+            "FROM [LTW].[dbo].[Users] WHERE userName = ?";
+
+        try (Connection conn = new DBConnection().getConnection();
+             PreparedStatement ps = conn.prepareStatement(sql)) {
+
+            ps.setString(1, username.trim());
+
+            try (ResultSet rs = ps.executeQuery()) {
+                if (rs.next()) {
+                    User u = new User();
+                    u.setId(rs.getInt("id"));
+                    u.setEmail(rs.getString("email"));
+                    u.setUserName(rs.getString("userName"));
+                    u.setFullName(rs.getString("fullName"));
+                    u.setPassWord(rs.getString("passWord")); 
+                    u.setAvatar(rs.getString("avatar"));
+                    u.setRoleid(rs.getInt("roleid"));
+                    u.setPhone(rs.getString("phone"));
+                    u.setCreatedDate(rs.getDate("createdDate"));
+                    return u;
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } catch (Exception e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+        return null;
+    }
 }
