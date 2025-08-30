@@ -1,5 +1,9 @@
 package vn.iostar.service.impl;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+
+import vn.iostar.config.DBConnection;
 import vn.iostar.dao.UserDao;
 import vn.iostar.dao.impl.UserDaoImpl;
 import vn.iostar.models.User;
@@ -52,4 +56,22 @@ public class UserServiceImpl implements UserService {
 	public void insert(User user) {
 		userDao.insert(user);
 	}
+	
+	@Override
+	public boolean updatePasswordByEmail(String email, String newPassword) {
+	    String sql = "UPDATE Users SET passWord = ? WHERE email = ?";
+	    try (Connection c = new DBConnection().getConnection();
+	         PreparedStatement ps = c.prepareStatement(sql)) {
+
+	        ps.setString(1, newPassword);
+	        ps.setString(2, email);
+	        return ps.executeUpdate() > 0;
+	    } catch (Exception e) {
+	        e.printStackTrace();
+	        return false;
+	    }
+	}
+
+
+
 }

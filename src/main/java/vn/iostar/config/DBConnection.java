@@ -6,8 +6,8 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 
 public class DBConnection {
-    private final String host = "DAVIDDET";   // KHÔNG kèm \SQLEXPRESS
-    private final int port = 1433;            // Đặt đúng cổng thực tế
+    private final String host = "DAVIDDET";   
+    private final int port = 1433;           
     private final String dbName = "LTW";
     private final String userID = "sa";
     private final String password = "123456";
